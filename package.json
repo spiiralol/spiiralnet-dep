@@ -1,0 +1,18 @@
+{
+  "name": "spiiralnet",
+  "version": "1.0.0",
+  "description": "SpiiralNet is a bot designed for Spiirals Treehouse.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: No test specified\" && exit 1",
+    "start:dev": "nodemon main.js",
+    "start": "node main.js"
+  },
+  "author": "Spiiral",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "ms": "^2.1.3"
+  }
+}

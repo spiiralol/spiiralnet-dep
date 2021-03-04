@@ -1,0 +1,4 @@
+node_modules/
+unused/
+.env
+config/config.json
