@@ -64,8 +64,12 @@ module.exports = {
                 .setThumbnail('https://cdn.discordapp.com/avatars/811966892189286401/e1d00e6d4f2eaf45dd19a21f266ffb20.png')
                 .addFields(
                     { name: 'Ban Command', value: 'If you add a reason for this command, make sure to add a time. or, just go with a ban with no reason.' },
-                    { name: 'Nickname Command', value: 'DO NOT tag yourself as it does some weird shiz on my end. <br> DO NOT make the new nickname longer than 14 characters as that is the limit on the Discord API.'}
+                    { name: 'Nickname Command', value: `DO NOT tag yourself as it does some weird shiz on my end. \r\n\tDO NOT make the new nickname longer than 14 characters as that is the limit on the Discord API.`}
                 )
+                .setTimestamp()
+                .setFooter('SpiiralNet V1.5.3');
+
+            message.channel.send(helpNotesMenu)
         }
     }
 }
