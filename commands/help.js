@@ -42,7 +42,7 @@ module.exports = {
 
             message.channel.send(helpCommandsMenu)
 
-        } else if (args[0] === 'commands') {
+        } else if (args[0] === 'errors') {
             const helpErrorMenu = new Discord.MessageEmbed()
                 .setColor('#808080')
                 .setTitle('Errors Menu')
