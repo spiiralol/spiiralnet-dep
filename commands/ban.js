@@ -19,7 +19,7 @@ module.exports = {
                 memberTarget.send(kickEmbed)
                 await delay(100);
                 memberTarget.kick(reason)
-                message.channel.send('Member has been kicked.')
+                message.channel.send('Member has been banned.')
             } else {
                 message.channel.send('Unable to find member.')
             }
