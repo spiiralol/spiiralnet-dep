@@ -3,7 +3,13 @@ const client = new Discord.Client();
 require('dotenv').config()
 
 client.on('ready', () => {
-    client.user.setActivity(`serving ${client.guilds.cache.size} servers`);
+    client.user.setPresence({
+        status: "dnd",  //You can show online, idle....
+        game: {
+            name: `over ${client.guilds.cache.size} servers`,  //The message shown
+            type: "WATCHING" //PLAYING: WATCHING: LISTENING: STREAMING:
+        }
+    });
     console.log(client.guilds.cache.map(guild => guild.name).join(", \n"));
 })
 

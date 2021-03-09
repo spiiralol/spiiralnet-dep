@@ -8,17 +8,19 @@ module.exports = {
                 const delay = (msec) => new Promise((resolve) => setTimeout(resolve, msec));
                 const memberTarget = message.guild.members.cache.get(target.id);
                 
-                const time = args[1]
-                const reason = args.slice(2).join(" ")
+                const reason = args.slice(1).join(" ")
 
                 const kickEmbed = new Discord.MessageEmbed()
+                    .setColor('#e31b14')
                     .setTitle('Ban Report')
                     .setAuthor(`Moderator: ${message.author.tag}`)
                     .setDescription(`You have been banned from **${message.guild.name}** with reason of ${reason}.`)
   
                 memberTarget.send(kickEmbed)
                 await delay(100);
-                memberTarget.kick(reason)
+                memberTarget.ban({
+                    reason: reason
+                })
                 message.channel.send('Member has been banned.')
             } else {
                 message.channel.send('Unable to find member.')

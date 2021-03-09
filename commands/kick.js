@@ -10,6 +10,7 @@ module.exports = {
                 const reason = args.slice(1).join(" ")
 
                 const kickEmbed = new Discord.MessageEmbed()
+                    .setColor('#f5bc2c')
                     .setTitle('Kick Report')
                     .setAuthor(`Moderator: ${message.author.tag}`)
                     .setDescription(`You have been kicked from **${message.guild.name}** with reason of ${reason}.`)
