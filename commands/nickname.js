@@ -11,7 +11,7 @@ module.exports = {
 
                 const memberTarget = message.guild.members.cache.get(target.id);
 
-                memberTarget.setNickname(args[1]).catch(message.react(emojis.green_tick));
+                memberTarget.setNickname(args.slice(1).join(" ")).catch(message.react(emojis.green_tick));
                 message.channel.send('Nickname Changed.')
             }
         } else {
