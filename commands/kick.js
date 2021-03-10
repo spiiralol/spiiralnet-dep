@@ -15,9 +15,9 @@ module.exports = {
                     .setAuthor(`Moderator: ${message.author.tag}`)
                     .setDescription(`You have been kicked from **${message.guild.name}** with reason of ${reason}.`)
   
-                memberTarget.send(kickEmbed)
+                memberTarget.send(kickEmbed).catch((err) => message.channel.send(`An error occurred: ${err}`))
                 await delay(100);
-                memberTarget.kick(reason)
+                memberTarget.kick(reason).catch((err) => message.channel.send(`An error occurred: ${err}`))
                 message.channel.send('Member has been kicked.')
             } else {
                 message.channel.send('Unable to find member.')
