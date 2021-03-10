@@ -15,10 +15,11 @@ module.exports = {
                     { name: '~help errors', value: 'Shows a list of common errors' },
                     { name: '~help notes', value: 'Shows a list of extra stuff' },
                     { name: '~help credits', value: 'Shows a list of credits' },
+                    { name: '\u200B', value: '\u200B' },
                     { name: 'Still Stuck?', value: 'Join the Support Server: https://discord.gg/QecA97NJcy' }
                 )
                 .setTimestamp()
-                .setFooter('SpiiralNet V1.4.6');
+                .setFooter('SpiiralNet');
 
             message.channel.send(helpMainMenu)
 
@@ -37,10 +38,11 @@ module.exports = {
                     { name: '`~ban` `@username` `time` `reason` or `ban` `@username`', value: 'Bans a user for a given time'},
                     { name: '`~clear` `amount`', value: 'Clears an amount of messages'},
                     { name: '`~nickname` `@username` `new-nickname`', value: 'Give a user a new nickname'},
+                    { name: '\u200B', value: '\u200B' },
                     { name: 'Still Stuck?', value: 'Join the Support Server: https://discord.gg/QecA97NJcy' }
                 )
                 .setTimestamp()
-                .setFooter('SpiiralNet V1.5.3');
+                .setFooter('SpiiralNet');
 
             message.channel.send(helpCommandsMenu)
 
@@ -54,10 +56,11 @@ module.exports = {
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Insufficient Permissions', value: 'This means you have not been given the correct permissions to use this command.'},
                     { name: 'Unable to `command-name` user', value: 'This means that either the user could not be found or an error occurred.'},
+                    { name: '\u200B', value: '\u200B' },
                     { name: 'Still Stuck?', value: 'Join the Support Server: https://discord.gg/QecA97NJcy' }
                 )
                 .setTimestamp()
-                .setFooter('SpiiralNet V1.5.3');
+                .setFooter('SpiiralNet');
 
             message.channel.send(helpErrorMenu)
 
@@ -72,10 +75,11 @@ module.exports = {
                     { name: 'Ban Command', value: 'If you add a reason for this command, make sure to add a time. or, just go with a ban with no reason.' },
                     { name: 'Nickname Command', value: `DO NOT tag yourself as it does some weird shiz on my end. \r\n\tDO NOT make the new nickname longer than 14 characters as that is the limit on the Discord API.`},
                     { name: 'Clear Command', value: "DO NOT try and delete messages older than 14 days, Doing so causes an error. I am looking into it, but I don't think this is fixable." },
+                    { name: '\u200B', value: '\u200B' },
                     { name: 'Still Stuck?', value: 'Join the Support Server: https://discord.gg/QecA97NJcy' }
                 )
                 .setTimestamp()
-                .setFooter('SpiiralNet V1.5.3');
+                .setFooter('SpiiralNet');
 
             message.channel.send(helpNotesMenu)
 
@@ -89,10 +93,10 @@ module.exports = {
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Bot Developer: ', value: 'SpiiralMania#7488' },
                     { name: 'Help & Tutorials: ', value: 'CodeLyon & StackOverflow'},
-                    { name: 'Supporters: ', value: 'You Guys and Girls!' }
+                    { name: 'Supporters: ', value: 'You Guys!' }
                 )
                 .setTimestamp()
-                .setFooter('SpiiralNet V1.5.3');
+                .setFooter('SpiiralNet');
 
             message.channel.send(helpCreditsMenu)
 
