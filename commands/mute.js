@@ -3,7 +3,7 @@ const ms = require('ms');
 module.exports = {
     name: 'mute',
     description: 'mutes a member',
-    execute(client, message, args) {
+    execute(client, message, args, Discord) {
         if (message.member.permissions.has("MUTE_MEMBERS")) {
             const target = message.mentions.users.first();
 
@@ -19,6 +19,15 @@ module.exports = {
                     memberTarget.roles.remove(mainRole.id);
                     memberTarget.roles.add(muteRole.id);
                     message.channel.send(`<@${memberTarget.user.id}> has been muted.`);
+
+                    const muteEmbed = new Discord.MessageEmbed()
+                        .setColor('#f5bc2c')    
+                        .setAuthor(`Moderator: ${message.author.tag}`)
+                        .setTitle('Mute Report')
+                        .setDescription(`You have been muted in **${message.guild.name}**.`)
+
+                    memberTarget.send(muteEmbed);
+
                     return;
                 }
 
@@ -26,9 +35,25 @@ module.exports = {
                 memberTarget.roles.add(muteRole.id);
                 message.channel.send(`<@${memberTarget.user.id}> has been muted for ${ms(ms(args[1]))}.`);
 
+                const muteDefEmbed = new Discord.MessageEmbed()
+                        .setColor('#f5bc2c')    
+                        .setAuthor(`Moderator: ${message.author.tag}`)
+                        .setTitle('Mute Report')
+                        .setDescription(`You have been muted in **${message.guild.name}** for ${ms(ms(args[1]))}.`)
+
+                memberTarget.send(muteDefEmbed);
+
                 setTimeout(function () {
                     memberTarget.roles.remove(muteRole.id);
                     memberTarget.roles.add(mainRole.id);
+
+                    const unmuteEmbed = new Discord.MessageEmbed()
+                        .setColor('#32a852')    
+                        .setAuthor(`Moderator: SpiiralNet`)
+                        .setTitle('Unmute Report')
+                        .setDescription(`You have been unmuted in **${message.guild.name}**.`)
+
+                    memberTarget.send(unmuteEmbed);
                 }, ms(args[1]));
             } else {
                 message.channel.send('Unable to mute user. Reason: No such user');

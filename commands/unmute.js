@@ -1,7 +1,7 @@
 module.exports = {
     name: 'unmute',
     description: 'unmutes a member',
-    execute(client, message, args) {
+    execute(client, message, args, Discord) {
         if(message.member.permissions.has("MUTE_MEMBERS")) {
             const target = message.mentions.users.first();
 
@@ -11,9 +11,19 @@ module.exports = {
 
                 let memberTarget = message.guild.members.cache.get(target.id);
 
+                message.delete()
+
                 memberTarget.roles.remove(muteRole.id);
                 memberTarget.roles.add(mainRole.id);
                 message.channel.send(`<@${memberTarget.user.id}> has been unmuted.`);
+
+                const muteEmbed = new Discord.MessageEmbed()
+                        .setColor('#32a852')    
+                        .setAuthor(`Moderator: ${message.author.tag}`)
+                        .setTitle('Unmute Report')
+                        .setDescription(`You have been unmuted in **${message.guild.name}**.`)
+
+                memberTarget.send(muteEmbed);
             } else {
                 message.channel.send('Unable to mute user. Reason: No such user');
             }
