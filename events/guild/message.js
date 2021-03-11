@@ -1,5 +1,5 @@
 module.exports = (Discord, client, message) => {
-    const prefix = '~';
+    const prefix = '>';
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     
     const args = message.content.slice(prefix.length).split(/ +/);
@@ -7,5 +7,10 @@ module.exports = (Discord, client, message) => {
 
     const command = client.commands.get(cmd);
 
-    if(command) command.execute(client, message, args, Discord);
+    try {
+        if(command) command.execute(client, message, args, Discord);
+    } catch (err) {
+        message.reply(`An error occurred: ${err}`)
+        console.error(err)
+    }
 }

@@ -7,7 +7,7 @@ module.exports = {
                 .setColor('#808080')
                 .setTitle('Help Menu')
                 .setAuthor('SpiiralNet')
-                .setThumbnail('https://cdn.discordapp.com/avatars/811966892189286401/e1d00e6d4f2eaf45dd19a21f266ffb20.png')
+                .setThumbnail('https://cdn.discordapp.com/avatars/811966892189286401/b809846d6a68bed33e56eb602fbb5878.png')
                 .setDescription('Select a option from the list below')
                 .addFields(
                     { name: '\u200B', value: '\u200B' },
@@ -28,7 +28,7 @@ module.exports = {
                 .setColor('#808080')
                 .setTitle('Commands Menu')
                 .setAuthor('SpiiralNet')
-                .setThumbnail('https://cdn.discordapp.com/avatars/811966892189286401/e1d00e6d4f2eaf45dd19a21f266ffb20.png')
+                .setThumbnail('https://cdn.discordapp.com/avatars/811966892189286401/b809846d6a68bed33e56eb602fbb5878.png')
                 .addFields(
                     { name: '\u200B', value: '\u200B' },
                     { name: '`~ping`', value: 'Checks if the bot is still alive.' },
@@ -51,7 +51,7 @@ module.exports = {
                 .setColor('#808080')
                 .setTitle('Errors Menu')
                 .setAuthor('SpiiralNet')
-                .setThumbnail('https://cdn.discordapp.com/avatars/811966892189286401/e1d00e6d4f2eaf45dd19a21f266ffb20.png')
+                .setThumbnail('https://cdn.discordapp.com/avatars/811966892189286401/b809846d6a68bed33e56eb602fbb5878.png')
                 .addFields(
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Insufficient Permissions', value: 'This means you have not been given the correct permissions to use this command.'},
@@ -69,7 +69,7 @@ module.exports = {
                 .setColor('#808080')
                 .setTitle('Commands Menu')
                 .setAuthor('SpiiralNet')
-                .setThumbnail('https://cdn.discordapp.com/avatars/811966892189286401/e1d00e6d4f2eaf45dd19a21f266ffb20.png')
+                .setThumbnail('https://cdn.discordapp.com/avatars/811966892189286401/b809846d6a68bed33e56eb602fbb5878.png')
                 .addFields(
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Ban Command', value: 'If you add a reason for this command, make sure to add a time. or, just go with a ban with no reason.' },
@@ -88,7 +88,7 @@ module.exports = {
                 .setColor('#808080')
                 .setTitle('Credits')
                 .setAuthor('SpiiralNet')
-                .setThumbnail('https://cdn.discordapp.com/avatars/811966892189286401/e1d00e6d4f2eaf45dd19a21f266ffb20.png')
+                .setThumbnail('https://cdn.discordapp.com/avatars/811966892189286401/b809846d6a68bed33e56eb602fbb5878.png')
                 .addFields(
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Bot Developer: ', value: 'SpiiralMania#7488' },

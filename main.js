@@ -4,7 +4,7 @@ require('dotenv').config()
 
 client.on('ready', () => {
     client.user.setActivity(`over ${client.guilds.cache.size} servers`, { type: 'WATCHING' })
-      .catch(console.error);
+      .catch(console.error);   
     //console.log(client.guilds.cache.map(guild => guild.name).join(", \n"));
 })
 

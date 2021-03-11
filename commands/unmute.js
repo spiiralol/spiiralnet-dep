@@ -1,5 +1,6 @@
 module.exports = {
     name: 'unmute',
+    aliases: [''],
     description: 'unmutes a member',
     execute(client, message, args, Discord) {
         if(message.member.permissions.has("MUTE_MEMBERS")) {

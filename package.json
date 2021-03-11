@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: No test specified\" && exit 1",
-    "start:dev": "nodemon main.js",
+    "start@dev": "nodemon main.js",
     "start": "node main.js"
   },
   "author": "Spiiral",
@@ -13,6 +13,7 @@
   "dependencies": {
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
+    "moment": "^2.29.1",
     "ms": "^2.1.3"
   }
 }
