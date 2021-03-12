@@ -38,6 +38,8 @@ module.exports = {
                     { name: '`~ban` `@username` `time` `reason` or `ban` `@username`', value: 'Bans a user for a given time'},
                     { name: '`~clear` `amount`', value: 'Clears an amount of messages'},
                     { name: '`~nickname` `@username` `new-nickname`', value: 'Give a user a new nickname'},
+                    { name: '`~userinfo` or `~userinfo` `@username`', value: 'Displays info about a user.' },
+                    { name: '`~warn` `@username`', value: 'Warns a user via DM' },
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Still Stuck?', value: 'Join the Support Server: https://discord.gg/QecA97NJcy' }
                 )
