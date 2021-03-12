@@ -2,6 +2,8 @@ module.exports = {
     name: 'kick',
     description: 'Kicks a member.',
     async execute(client, message, args, Discord) {
+        if (!message.guild.me.hasPermission("KICK_MEMBERS")) return message.channel.send('I do not have the needed permissions. Needed Perms: `KICK_MEMBERS`')
+        
         if (message.member.permissions.has("KICK_MEMBERS")) {
             const target = message.mentions.users.first();
             if(target) {

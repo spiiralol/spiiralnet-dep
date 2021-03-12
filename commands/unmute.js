@@ -3,6 +3,8 @@ module.exports = {
     aliases: [''],
     description: 'unmutes a member',
     execute(client, message, args, Discord) {
+        if (!message.guild.me.hasPermission("MANAGE_ROLES")) return message.channel.send('I do not have the needed permissions. Needed perms: `MANAGE_ROLES`')
+        
         if(message.member.permissions.has("MUTE_MEMBERS")) {
             const target = message.mentions.users.first();
 

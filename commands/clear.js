@@ -2,6 +2,8 @@ module.exports = {
     name: 'clear',
     description: 'Clear messages',
     async execute(client, message, args) {
+        if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) return message.channel.send('I do not have the needed permissions. Needed perms: `MANAGE_MESSAGES`')
+        
         if (message.member.permissions.has("MANAGE_MESSAGES")) {
             if (!args[0]) return message.reply('Specify an amount of messages to clear');
             if (isNaN(args[0])) return message.reply('Please specify a real number.');
