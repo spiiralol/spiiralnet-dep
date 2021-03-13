@@ -31,6 +31,8 @@ client.on('guildCreate', guild => {
 
     let channel = guild.channels.cache.get(guild.systemChannelID || channelID);
 
+    console.log(guild.name)
+
   const welcomeEmbed = new Discord.MessageEmbed()
     .setTitle('Thanks for adding me!')
     .setThumbnail('https://cdn.discordapp.com/avatars/811966892189286401/b809846d6a68bed33e56eb602fbb5878.png')
