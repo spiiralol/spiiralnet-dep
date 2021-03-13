@@ -8,13 +8,13 @@ client.on('ready', () => {
     //console.log(client.guilds.cache.map(guild => guild.name).join(", \n"));
 })
 
-client.on('guildMemberAdd', guildMember => {
-  let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'Member');
+// client.on('guildMemberAdd', guildMember => {
+//   let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'Member');
 
-  guildMember.roles.add(welcomeRole)
+//   guildMember.roles.add(welcomeRole)
 
-  console.log(guildMember)
-})
+//   console.log(guildMember)
+// })
 
 client.on('guildCreate', guild => {
   let channelID;

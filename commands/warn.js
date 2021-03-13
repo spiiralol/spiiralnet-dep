@@ -8,10 +8,12 @@ module.exports = {
                 const memberTarget = message.guild.members.cache.get(target.id)
                 const reason = args.slice(1).join(" ")
 
+                message.delete()
+
                 // Message that is DM'd to the user
                 const warnDMEmbed = new Discord.MessageEmbed()
                     .setColor('#f5bc2c')
-                    .setAuthor(`Moderator: ${message.author.tag}`, message.author.displayAvatarURL())
+                    .setAuthor(`Moderator: ${message.author.tag}`)
                     .setTitle('Warn Report')
                     .setDescription(`You have been warned in **${message.guild.name}** with reason of ${reason}`)
 
