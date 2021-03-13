@@ -35,8 +35,8 @@ module.exports = {
                     { name: '`~mute` `@username` `time`', value: 'Mutes a user for  a given time'},
                     { name: '`~unmute` `@username`', value: 'Unmutes a user.'},
                     { name: '`~kick` `@username` `reason`', value: 'Kicks a user.'},
-                    { name: '`~ban` `@username` `time` `reason` or `ban` `@username`', value: 'Bans a user for a given time'},
-                    { name: '`~clear` `amount`', value: 'Clears an amount of messages'},
+                    { name: '`~ban` `@username` `time` `reason`', value: 'Bans a user.'},
+                    { name: '`~clear` `amount`', value: 'Clears an amount of messages (remember to add 1 on to the value)'},
                     { name: '`~nickname` `@username` `new-nickname`', value: 'Give a user a new nickname'},
                     { name: '`~userinfo` or `~userinfo` `@username`', value: 'Displays info about a user.' },
                     { name: '`~warn` `@username`', value: 'Warns a user via DM' },
@@ -94,7 +94,7 @@ module.exports = {
                 .addFields(
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Bot Developer: ', value: 'SpiiralMania#7488' },
-                    { name: 'Help & Tutorials: ', value: 'CodeLyon & StackOverflow'},
+                    { name: 'GitHub Repo: ', value: 'https://github.com/spiiralol/spiiralnetlivediscord' },
                     { name: 'Supporters: ', value: 'You Guys!' }
                 )
                 .setTimestamp()
