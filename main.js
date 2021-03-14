@@ -11,7 +11,7 @@ client.on('ready', () => {
 client.on('guildMemberAdd', guildMember => {
   let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'Member');
 
-  guildMember.roles.add(welcomeRole).catch((err) => console.log('Unable to find member role'))
+  guildMember.roles.add(welcomeRole).catch((err) => console.log(''))
 })
 
 client.on('guildCreate', guild => {
