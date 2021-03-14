@@ -15,7 +15,7 @@ module.exports = {
                 .setAuthor(message.author.tag, message.author.displayAvatarURL())
                 .addField('User ID', message.author.id, true)
                 .addField('Nickname', `${message.author.nickname ? `${message.author.nickname}` : 'None'}`, true)
-                .addField('Joined On', `${moment(message.author.joinedAt).format('DD-MM-YYYY')}`, true)
+                //.addField('Joined On', `${moment(message.author.joinedAt).format('DD-MM-YYYY')}`, true)
                 .addField('Created On', `${moment(memberTarget.createdAt).format('DD-MM-YYYY')}`, true)
                 .setTimestamp()
                 .setFooter('SpiiralNet')
