@@ -17,7 +17,11 @@ module.exports = {
                 message.channel.send('Nickname Changed.')
             }
         } else {
-            message.channel.send('Insufficient Permsissions')
+            const testEmbed = new Discord.MessageEmbed()
+                    .setColor('#e31b14')
+                    .setDescription(`🚫  You do not have the right permissions to execute this command.`)
+
+            message.channel.send(testEmbed)
         }
         
     }

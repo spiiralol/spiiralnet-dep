@@ -9,8 +9,6 @@ module.exports = {
         if (!args[0]) {
             const memberTarget = message.author
 
-            console.log(message.author)
-
             const userInfoEmbed = new Discord.MessageEmbed()
                 .setAuthor(message.author.tag, message.author.displayAvatarURL())
                 .addField('User ID', message.author.id, true)
