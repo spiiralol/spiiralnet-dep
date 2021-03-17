@@ -2,9 +2,16 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 require('dotenv').config()
 
-client.on('ready', () => {
-    client.user.setActivity(`${client.guilds.cache.size} servers`, { type: 'WATCHING' })
-      .catch(console.error);   
+client.on('ready', async () => {
+  const delay = (msec) => new Promise((resolve) => setTimeout(resolve, msec));  
+  while (0 == 0) {
+      await delay(10000);
+      client.user.setActivity(`${client.guilds.cache.size} servers`, { type: 'WATCHING' })
+        .catch(console.error);
+      await delay(10000);
+      client.user.setActivity(`~help`, { type: 'WATCHING' })
+        .catch(console.error); 
+    }
     //console.log(client.guilds.cache.map(guild => guild.name).join(", \n"));
 })
 
