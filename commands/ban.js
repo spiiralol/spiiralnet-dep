@@ -2,7 +2,13 @@ module.exports = {
     name: 'ban',
     description: 'Bans a member.',
     async execute(client, message, args, Discord) {
-        if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.channel.send('I do not have the needed permissions. Needed perms: `BAN_MEMBERS`')
+        if (!client.user.hasPermission("BAN_MEMBERS")) {
+            const permEmbed = new Discord.MessageEmbed()
+                    .setColor('#e31b14')
+                    .setDescription('🚫  I do not have the `BAN MEMBERS` permission.')
+
+            message.channel.send(permEmbed)
+        }
         
         if (message.member.permissions.has("BAN_MEMBERS")) {
             const target = message.mentions.users.first();
@@ -19,6 +25,15 @@ module.exports = {
                     .setDescription(`You have been banned from **${message.guild.name}** with reason of ${reason}.`)
   
                 memberTarget.send(kickEmbed).catch((err) => message.channel.send(`An error occurred: ${err}`))
+                const warnChannelEmbed = new Discord.MessageEmbed()
+                    .setColor('#f5bc2c')
+                    .setAuthor(`${memberTarget.user.username}#${memberTarget.user.discriminator}`, memberTarget.user.displayAvatarURL())
+                    .setTitle('Ban Report')
+                    .setDescription(`${memberTarget.user.username} was banned for ${reason}`)
+                    .setTimestamp()
+                    .setFooter(`SpiiralNet | Moderator: ${message.author.tag}`)
+
+                message.channel.send(warnChannelEmbed)
                 await delay(100);
                 memberTarget.ban({
                     reason: reason
@@ -30,7 +45,7 @@ module.exports = {
         } else {
             const testEmbed = new Discord.MessageEmbed()
                     .setColor('#e31b14')
-                    .setDescription(`🚫  You do not have the right permissions to execute this command.`)
+                    .setDescription('🚫  You do not have the `BAN MEMBERS` permission.')
 
             message.channel.send(testEmbed)
         }

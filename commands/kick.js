@@ -2,7 +2,13 @@ module.exports = {
     name: 'kick',
     description: 'Kicks a member.',
     async execute(client, message, args, Discord) {
-        if (!message.guild.me.hasPermission("KICK_MEMBERS")) return message.channel.send('I do not have the needed permissions. Needed Perms: `KICK_MEMBERS`')
+        // if (!message.guild.me.hasPermission("KICK_MEMBERS")) {
+        //     const permEmbed = new Discord.MessageEmbed()
+        //             .setColor('#e31b14')
+        //             .setDescription('🚫  I do not have the `KICK MEMBERS` permission.')
+
+        //     message.channel.send(permEmbed)
+        // }
         
         if (message.member.permissions.has("KICK_MEMBERS")) {
             const target = message.mentions.users.first();
@@ -18,16 +24,24 @@ module.exports = {
                     .setDescription(`You have been kicked from **${message.guild.name}** with reason of ${reason}.`)
   
                 memberTarget.send(kickEmbed).catch((err) => message.channel.send(`An error occurred: ${err}`))
+                const warnChannelEmbed = new Discord.MessageEmbed()
+                    .setColor('#f5bc2c')
+                    .setAuthor(`${memberTarget.user.username}#${memberTarget.user.discriminator}`, memberTarget.user.displayAvatarURL())
+                    .setTitle('Kick Report')
+                    .setDescription(`${memberTarget.user.username} was kicked for ${reason}`)
+                    .setTimestamp()
+                    .setFooter(`SpiiralNet | Moderator: ${message.author.tag}`)
+
+                message.channel.send(warnChannelEmbed)
                 await delay(100);
                 memberTarget.kick(reason).catch((err) => message.channel.send(`An error occurred: ${err}`))
-                message.channel.send('Member has been kicked.')
             } else {
                 message.channel.send('Unable to find member.')
             }
         } else {
             const testEmbed = new Discord.MessageEmbed()
                     .setColor('#e31b14')
-                    .setDescription(`🚫  You do not have the right permissions to execute this command.`)
+                    .setDescription('🚫  You do not have the `KICK MEMBERS` permission.')
 
             message.channel.send(testEmbed)
         }

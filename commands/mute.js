@@ -4,7 +4,13 @@ module.exports = {
     name: 'mute',
     description: 'mutes a member',
     execute(client, message, args, Discord) {
-        if (!message.guild.me.hasPermission("MANAGE_ROLES")) return message.channel.send('I do not have the needed permissions. Needed perms: `MANAGE_ROLES`')
+        if (!message.guild.me.hasPermission("MANAGE_ROLES")) {
+            const permEmbed = new Discord.MessageEmbed()
+                    .setColor('#e31b14')
+                    .setDescription('🚫  I do not have the `MANAGE ROLES` permission.')
+
+            message.channel.send(permEmbed)
+        }
         
         if (message.member.permissions.has("MUTE_MEMBERS")) {
             const target = message.mentions.users.first();
@@ -65,7 +71,7 @@ module.exports = {
         } else {
             const testEmbed = new Discord.MessageEmbed()
                     .setColor('#e31b14')
-                    .setDescription(`🚫  You do not have the right permissions to execute this command.`)
+                    .setDescription('🚫  You do not have the `MUTE MEMBERS` permission.')
 
             message.channel.send(testEmbed)
         }

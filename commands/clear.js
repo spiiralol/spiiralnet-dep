@@ -3,7 +3,13 @@ module.exports = {
     description: 'Clear messages',
     async execute(client, message, args, Discord) {
         const delay = (msec) => new Promise((resolve) => setTimeout(resolve, msec));
-        if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) return message.channel.send('I do not have the needed permissions. Needed perms: `MANAGE_MESSAGES`')
+        if (!client.user.hasPermission("MANAGE_MESSAGES")) {
+            const permEmbed = new Discord.MessageEmbed()
+                    .setColor('#e31b14')
+                    .setDescription('🚫  I do not have the `MANAGE MESSAGES` permission.')
+
+            message.channel.send(permEmbed)
+        }
         
         if (message.member.permissions.has("MANAGE_MESSAGES")) {
             if (!args[0]) return message.reply('Specify an amount of messages to clear');
@@ -21,7 +27,11 @@ module.exports = {
             await delay(5000);
             message.channel.bulkDelete(1)
         } else {
-            message.channel.send('Insufficient Permissions')
+            const testEmbed = new Discord.MessageEmbed()
+                    .setColor('#e31b14')
+                    .setDescription('🚫  You do not have the `MANAGE MESSAGES` permission.')
+
+            message.channel.send(testEmbed)
         }
     }
 }
