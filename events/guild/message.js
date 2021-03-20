@@ -1,5 +1,12 @@
+require('dotenv').config()
+const { defualtPrefix } = require('../../config.json')
+
+const db = require('quick.db')
+
 module.exports = (Discord, client, message) => {
-    const prefix = '~';
+    let prefix = db.get(`prefix${message.guild.id}`);
+    if (prefix === null) prefix = defualtPrefix;
+
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     
     const testEmbed = new Discord.MessageEmbed()
@@ -16,7 +23,12 @@ module.exports = (Discord, client, message) => {
     try {
         if(command) command.execute(client, message, args, Discord);
     } catch (err) {
-        message.reply(`An error occurred: ${err}`)
+        const errorEmbed = new Discord.MessageEmbed()
+            .setTitle('Error!')
+            .setDescription(`An error occurred. Devs have been notified.`)
+            .addField('Error Code', err)
+        
+        message.channel.send(errorEmbed)
         console.error(err)
     }
 }

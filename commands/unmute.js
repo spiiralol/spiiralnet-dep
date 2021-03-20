@@ -3,13 +3,13 @@ module.exports = {
     aliases: [''],
     description: 'unmutes a member',
     execute(client, message, args, Discord) {
-        if (!message.guild.me.hasPermission("MANAGE_ROLES")) {
-            const permEmbed = new Discord.MessageEmbed()
-                    .setColor('#e31b14')
-                    .setDescription('🚫  I do not have the `MANAGE ROLES` permission.')
+        // if (!message.guild.me.hasPermission("MANAGE_ROLES")) {
+        //     const permEmbed = new Discord.MessageEmbed()
+        //             .setColor('#e31b14')
+        //             .setDescription('🚫  I do not have the `MANAGE ROLES` permission.')
 
-            message.channel.send(permEmbed)
-        }
+        //     message.channel.send(permEmbed)
+        // }
         
         if(message.member.permissions.has("MUTE_MEMBERS")) {
             const target = message.mentions.users.first();

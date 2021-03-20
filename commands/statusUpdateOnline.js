@@ -17,6 +17,8 @@ module.exports = {
                 .setFooter('SpiiralNet | Status Update System')
             
             message.guild.roles.cache.get("821400228489199696").members.forEach(member => member.send(updateEmbed))
+            const channelID = "817827404307103780"
+            client.channels.cache.get(channelID).send(updateEmbed)
             message.channel.send('Sent Alert')
         } else {
             return message.channel.send(testEmbed)
