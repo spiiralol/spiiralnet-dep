@@ -1,11 +1,17 @@
 require('dotenv').config()
-const { defualtPrefix } = require('../../config.json')
+const { prefix } = require('../../config.json')
+//const prefix  = defualtPrefix
 
 const db = require('quick.db')
 
 module.exports = (Discord, client, message) => {
-    let prefix = db.get(`prefix${message.guild.id}`);
-    if (prefix === null) prefix = defualtPrefix;
+    
+    // const guildid = message.guild.id;
+    // console.log(guildid)
+    
+    // let prefix = db.get(`prefix_${message.guild.id}`)
+    // if (!prefix) prefix = defualtPrefix;
+    // if (prefix === null) prefix = defualtPrefix;
 
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     

@@ -8,9 +8,12 @@ module.exports = {
 
         //Perm check
         if (!message.member.hasPermission('MANAGE_GUILD')) {
+            const cross = `<:redcross:821055423670517810>`
+            const tick = `<:greentick:821055425268285450>`
+            
             const testEmbed = new Discord.MessageEmbed()
-                .setColor('#e31b14')
-                .setDescription('🚫  You do not have the `MANAGE SERVER` permission.')
+                    .setColor('#e31b14')
+                    .setDescription(cross + '  You do not have the `MANAGE SERVER` permission.')
 
             return message.channel.send(testEmbed)
         }

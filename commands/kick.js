@@ -10,7 +10,7 @@ module.exports = {
         //     message.channel.send(permEmbed)
         // }
         
-        if (message.member.permissions.has("KICK_MEMBERS")) {
+        if (message.member.hasPermission("KICK_MEMBERS")) {
             const target = message.mentions.users.first();
             if(target) {
                 const delay = (msec) => new Promise((resolve) => setTimeout(resolve, msec));
@@ -39,11 +39,14 @@ module.exports = {
                 message.channel.send('Unable to find member.')
             }
         } else {
+            const cross = `<:redcross:821055423670517810>`
+            const tick = `<:greentick:821055425268285450>`
+            
             const testEmbed = new Discord.MessageEmbed()
                     .setColor('#e31b14')
-                    .setDescription('🚫  You do not have the `KICK MEMBERS` permission.')
+                    .setDescription(cross + '  You do not have the `KICK MEMBERS` permission.')
 
-            message.channel.send(testEmbed)
+            return message.channel.send(testEmbed)
         }
     }
 }

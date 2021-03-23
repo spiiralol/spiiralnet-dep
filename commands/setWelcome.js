@@ -1,10 +1,10 @@
 const db = require('quick.db')
 
 module.exports = {
-    name: 'setwelcome',
+    name: 'setwefdgbtghnwrnnghlcome',
     description: 'Sets the servers welcome',
     execute(client, message, args, Discord) {
-        if (message.member.permissions.has("MANAGE_SERVER")) {
+        if (message.member.hasPermission("MANAGE_GUILD")) {
             const channel = message.mentions.channels.first() 
 
             if (!channel) {

@@ -11,7 +11,7 @@ module.exports = {
         //     message.channel.send(permEmbed)
         // }
         
-        if (message.member.permissions.has("MANAGE_MESSAGES")) {
+        if (message.member.hasPermission("MANAGE_MESSAGES")) {
             if (!args[0]) return message.reply('Specify an amount of messages to clear');
             if (isNaN(args[0])) return message.reply('Please specify a real number.');
 
@@ -27,11 +27,14 @@ module.exports = {
             await delay(5000);
             message.channel.bulkDelete(1)
         } else {
+            const cross = `<:redcross:821055423670517810>`
+            const tick = `<:greentick:821055425268285450>`
+            
             const testEmbed = new Discord.MessageEmbed()
                     .setColor('#e31b14')
-                    .setDescription('🚫  You do not have the `MANAGE MESSAGES` permission.')
+                    .setDescription(cross + '  You do not have the `MANAGE MESSAGES` permission.')
 
-            message.channel.send(testEmbed)
+            return message.channel.send(testEmbed)
         }
     }
 }

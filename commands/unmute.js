@@ -1,3 +1,5 @@
+const db = require('quick.db')
+
 module.exports = {
     name: 'unmute',
     aliases: [''],
@@ -11,19 +13,38 @@ module.exports = {
         //     message.channel.send(permEmbed)
         // }
         
-        if(message.member.permissions.has("MUTE_MEMBERS")) {
+        if(message.member.hasPermission("MUTE_MEMBERS")) {
+            const mutedRoleCheckId = db.get(`mutedrole_${message.guild.id}`)
+            const welcomeRoleCheckId = db.get(`welcomerole_${message.guild.id}`)
+
+            if (!mutedRoleCheckId) {
+                const testEmbed = new Discord.MessageEmbed()
+                    .setColor('#e31b14')
+                    .setDescription(`❕ There is no muted role set up.`)
+    
+                return message.channel.send(testEmbed)
+            }
+
+            if (!welcomeRoleCheckId) {
+                const testEmbed = new Discord.MessageEmbed()
+                    .setColor('#e31b14')
+                    .setDescription(`❕ There is no main/welcome role set up.`)
+    
+                return message.channel.send(testEmbed)
+            }
+            
             const target = message.mentions.users.first();
 
             if(target) {
-                let mainRole = message.guild.roles.cache.find(role => role.name === 'Member');
-                let muteRole = message.guild.roles.cache.find(role => role.name === 'MUTED');
+                let mainRole = db.get(`welcomerole_${message.guild.id}`)
+                let muteRole = db.get(`mutedrole_${message.guild.id}`)
 
                 let memberTarget = message.guild.members.cache.get(target.id);
 
                 message.delete()
 
-                memberTarget.roles.remove(muteRole.id);
-                memberTarget.roles.add(mainRole.id);
+                memberTarget.roles.remove(muteRole);
+                memberTarget.roles.add(mainRole);
                 message.channel.send(`<@${memberTarget.user.id}> has been unmuted.`);
 
                 const muteEmbed = new Discord.MessageEmbed()

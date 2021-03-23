@@ -4,15 +4,15 @@ module.exports = {
     name: 'nickname',
     description: 'Changes a users nnickname',
     execute(client, message, args, Discord) {
-        if (!message.guild.me.hasPermission("MANAGE_NICKNAMES")) {
-            const permEmbed = new Discord.MessageEmbed()
-                    .setColor('#e31b14')
-                    .setDescription('🚫  I do not have the `MANAGE NICKNAMES` permission.')
+        // if (!message.guild.me.hasPermission("MANAGE_NICKNAMES")) {
+        //     const permEmbed = new Discord.MessageEmbed()
+        //             .setColor('#e31b14')
+        //             .setDescription('🚫  I do not have the `MANAGE NICKNAMES` permission.')
 
-            message.channel.send(permEmbed)
-        }
+        //     message.channel.send(permEmbed)
+        //  }
         
-        if (message.member.permissions.has("MANAGE_NICKNAMES")) {
+        if (message.member.hasPermission("MANAGE_NICKNAMES")) {
             const target = message.mentions.users.first();
             if (target) {
                 if(!args[1]) return message.reply('Please specify a new nickname')
@@ -23,11 +23,14 @@ module.exports = {
                 message.channel.send('Nickname Changed.')
             }
         } else {
+            const cross = `<:redcross:821055423670517810>`
+            const tick = `<:greentick:821055425268285450>`
+            
             const testEmbed = new Discord.MessageEmbed()
                     .setColor('#e31b14')
-                    .setDescription('🚫  You do not have the `MANAGE NICKNAMES` permission.')
+                    .setDescription(cross + '  You do not have the `MANAGE NICKNAMES` permission.')
 
-            message.channel.send(testEmbed)
+            return message.channel.send(testEmbed)
         }
         
     }
