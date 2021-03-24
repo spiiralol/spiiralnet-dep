@@ -6,7 +6,6 @@ module.exports = {
     execute(client, message, args, Discord) {
         if (!message.member.hasPermission("ADMINISTRATOR")) {
             const cross = `<:redcross:821055423670517810>`
-            const tick = `<:greentick:821055425268285450>`
             
             const testEmbed = new Discord.MessageEmbed()
                     .setColor('#e31b14')
@@ -45,13 +44,14 @@ module.exports = {
             return message.channel.send(testEmbed)
         }
 
-        const person = message.member
-        
+        const person = message.member       
+        const tick = `<:greentick:821055425268285450>`
+
         db.set(`mutedrole_${message.guild.id}`, role.id)
 
         const setEmbed = new Discord.MessageEmbed()
             .setTitle('Mute Role Set')
-            .setDescription(`Set **${role.name}** as the mute role.`)
+            .setDescription(`${tick} Set **${role.name}** as the mute role.`)
 
         message.channel.send(setEmbed)
     }

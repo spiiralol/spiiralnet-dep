@@ -6,7 +6,6 @@ module.exports = {
     execute(client, message, args, Discord) {
         if (!message.member.hasPermission("ADMINISTRATOR")) {
             const cross = `<:redcross:821055423670517810>`
-            const tick = `<:greentick:821055425268285450>`
             
             const testEmbed = new Discord.MessageEmbed()
                     .setColor('#e31b14')
@@ -46,12 +45,13 @@ module.exports = {
         }
 
         const person = message.member
-        
+        const tick = `<:greentick:821055425268285450>`
+
         db.set(`welcomerole_${message.guild.id}`, role.id)
 
         const setEmbed = new Discord.MessageEmbed()
             .setTitle('Welcome Role Set')
-            .setDescription(`Set **${role.name}** as the welcome role.`)
+            .setDescription(`${tick} Set **${role.name}** as the welcome role.`)
 
         message.channel.send(setEmbed)
     }

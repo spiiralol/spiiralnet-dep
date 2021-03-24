@@ -1,17 +1,24 @@
 require('dotenv').config()
-const { prefix } = require('../../config.json')
+const config = require('../../config.json')
+const prefix = config.prefix
 //const prefix  = defualtPrefix
 
 const db = require('quick.db')
+//const prefix = require('../../commands/prefix')
 
 module.exports = (Discord, client, message) => {
     
     // const guildid = message.guild.id;
     // console.log(guildid)
     
-    // let prefix = db.get(`prefix_${message.guild.id}`)
-    // if (!prefix) prefix = defualtPrefix;
-    // if (prefix === null) prefix = defualtPrefix;
+    // try {
+    //     let prefix = db.get(`prefix_${message.guild.id}`)
+    //     if (!prefix) prefix = defPrefix;
+    //     if (prefix === null) prefix = defPrefix;
+    // } catch (err) {
+    //     prefix = defPrefix
+    //     message.channel.send('An error occured when using prefixes. Please run ``your prefix`setprefix ~`')
+    // }
 
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     
