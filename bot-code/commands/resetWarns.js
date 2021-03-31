@@ -69,5 +69,13 @@ module.exports = {
 
         await message.channel.send(msgEmbed)
 
+        const logChannel = db.get(`logchannel_${message.guild.id}`)
+        if (logChannel) {
+            const warnLogEmbed = new Discord.MessageEmbed()
+                .setColor('#32a852')
+                .setDescription(`${user}'s warnings were reset by ${message.author.username} in **<#${message.channel.id}>**.`)
+                
+                client.channels.cache.get(logChannel).send(warnLogEmbed);
+        }
     }
 }

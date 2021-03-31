@@ -92,6 +92,17 @@ module.exports = {
                 .setTitle('Warn Report')
                 .setDescription(`${message.mentions.users.first().username} was warned for ${reason}.`)
 
+            const logChannel = db.get(`logchannel_${message.guild.id}`)
+            if (logChannel) {
+                const warnLogEmbed = new Discord.MessageEmbed()
+                .setColor('#f5bc2c')
+                .setAuthor(`Moderator: ${message.author.tag}`)
+                .setTitle('Warn Report')
+                .setDescription(`${message.mentions.users.first().username} was warned in **<#${message.channel.id}>** for ${reason}.`)
+                
+                client.channels.cache.get(logChannel).send(warnLogEmbed);
+            }
+
             await message.channel.send(warnMSGEmbed)
         } else if (warnings !== null) {
             db.add(`warnings_${message.guild.id}_${user.id}`, 1)
@@ -102,7 +113,18 @@ module.exports = {
                 .setTitle('Warn Report')
                 .setDescription(`You have been warned in **${message.guild.name}** with reason of ${reason}`)
 
-            user.send(warnDMEmbed)
+            user.send(warnDMEmbed).catch((err) => message.channel.send('Cannot DM this user.'))
+
+            const logChannel = db.get(`logchannel_${message.guild.id}`)
+            if (logChannel) {
+                const warnLogEmbed = new Discord.MessageEmbed()
+                .setColor('#f5bc2c')
+                .setAuthor(`Moderator: ${message.author.tag}`)
+                .setTitle('Warn Report')
+                .setDescription(`${message.mentions.users.first().username} was warned in **<#${message.channel.id}>** for ${reason}.`)
+                
+                client.channels.cache.get(logChannel).send(warnLogEmbed);
+            }
 
             const warnMSGEmbed = new Discord.MessageEmbed()
                 .setColor('#f5bc2c')

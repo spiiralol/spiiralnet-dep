@@ -1,0 +1,3 @@
+{ name: 'General', value: '`help`, `invite`, `ping`, `userinfo @username`, \n\t`warnings @username`, `setnote note`', inline: true },
+                { name: 'Moderation', value: '`ban @username reason`, `clear amount`, `kick @username reason`, \n\t`mute @username <time>`, `nickname @username new-nickname`, \n\t`resetwarns @username`, `unmute @username`, `warn @username reason`', inline: true },
+                { name: 'Config', value: '`~setlogchannel #channel`, `~setmuterole @role`, `~setwelcomerole @role`', inline: true },

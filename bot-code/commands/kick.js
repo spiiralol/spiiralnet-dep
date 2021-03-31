@@ -1,3 +1,5 @@
+const db = require('quick.db')
+
 module.exports = {
     name: 'kick',
     description: 'Kicks a member.',
@@ -33,6 +35,20 @@ module.exports = {
                     .setFooter(`SpiiralNet | Moderator: ${message.author.tag}`)
 
                 message.channel.send(warnChannelEmbed)
+
+                const logChannel = db.get(`logchannel_${message.guild.id}`)
+                if (logChannel) {
+                    const logEmbed = new Discord.MessageEmbed()
+                        .setColor('#f5bc2c')
+                        //.setAuthor(`${memberTarget.user.username}#${memberTarget.user.discriminator}`, memberTarget.user.displayAvatarURL())
+                        .setTitle('Kick Report')
+                        .setDescription(`${memberTarget.user.username} was kicked in **<#${message.channel.id}>** for ${reason}`)
+                        .setTimestamp()
+                        .setFooter(`SpiiralNet | Moderator: ${message.author.tag}`)
+ 
+                        client.channels.cache.get(logChannel).send(logEmbed);
+                }
+
                 await delay(100);
                 memberTarget.kick(reason).catch((err) => message.channel.send(`An error occurred: ${err}`))
             } else {

@@ -1,3 +1,5 @@
+const db = require('quick.db')
+
 module.exports = {
     name: 'ban',
     description: 'Bans a member.',
@@ -26,7 +28,7 @@ module.exports = {
   
                 memberTarget.send(kickEmbed).catch((err) => message.channel.send(`An error occurred: ${err}`))
                 const warnChannelEmbed = new Discord.MessageEmbed()
-                    .setColor('#f5bc2c')
+                    .setColor('#e31b14')
                     .setAuthor(`${memberTarget.user.username}#${memberTarget.user.discriminator}`, memberTarget.user.displayAvatarURL())
                     .setTitle('Ban Report')
                     .setDescription(`${memberTarget.user.username} was banned for ${reason}`)
@@ -34,11 +36,23 @@ module.exports = {
                     .setFooter(`SpiiralNet | Moderator: ${message.author.tag}`)
 
                 message.channel.send(warnChannelEmbed)
+
+                const logChannel = db.get(`logchannel_${message.guild.id}`)
+                if (logChannel) {
+                    const logEmbed = new Discord.MessageEmbed()
+                        .setColor('#e31b14')
+                        //.setAuthor(`${memberTarget.user.username}#${memberTarget.user.discriminator}`, memberTarget.user.displayAvatarURL())
+                        .setTitle('Ban Report')
+                        .setDescription(`${memberTarget.user.username} was banned in **<#${message.channel.id}>** for ${reason}`)
+                        .setTimestamp()
+                        .setFooter(`SpiiralNet | Moderator: ${message.author.tag}`)
+                        
+                        client.channels.cache.get(logChannel).send(logEmbed);
+                }
                 await delay(100);
                 memberTarget.ban({
                     reason: reason
                 }).catch((err) => message.channel.send(`An error occurred: ${err}`))
-                message.channel.send('Member has been banned.')
             } else {
                 message.channel.send('Unable to find member.')
             }

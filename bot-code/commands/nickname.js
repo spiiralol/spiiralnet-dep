@@ -1,3 +1,4 @@
+const db = require('quick.db')
 const emojis = require('../config/emojis.json')
 
 module.exports = {
@@ -21,6 +22,17 @@ module.exports = {
 
                 memberTarget.setNickname(args.slice(1).join(" ")).catch(message.react(emojis.green_tick));
                 message.channel.send('Nickname Changed.')
+
+                const logChannel = db.get(`logchannel_${message.guild.id}`)
+                if (logChannel) {
+                    const logEmbed = new Discord.MessageEmbed()
+                        .setColor('#f5bc2c')
+                        //.setAuthor(`${memberTarget.user.username}#${memberTarget.user.discriminator}`, memberTarget.user.displayAvatarURL())
+                        .setTitle('Nickname Change')
+                        .setDescription(`${memberTarget.user.username}'s nickname was changed to **${args.slice(1).join(' ')}** by <@${message.author.id}>`)
+                    
+                        client.channels.cache.get(logChannel).send(logEmbed);
+                }
             }
         } else {
             const cross = `<:redcross:821055423670517810>`

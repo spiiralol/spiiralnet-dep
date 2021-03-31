@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/edf2a8b45d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/style/styles.css">
+    <title>SpiiralNet Dev</title>
+</head>
+<body>
+    <h1 class="title">SpiiralNet Control</h1>
+    <p class="error-fake">Don't really know how you got here...</p>
+    <div class="admin">
+        <p class="admin-ask">SpiiralNet Admin?</p>
+        <button class="button-panel" onclick="openAdminPanel()">Admin Panel</button>
+        <i class="fas fa-user-lock fa-4x"></i>
+    </div>
+
+    <div class="website">
+        <p class="admin-ask">SpiiralNet User?</p>
+        <button class="button-panel" onclick="openBotSite()">Website</button>
+        <i class="fas fa-users-cog fa-4x"></i>
+    </div>
+
+    <div class="footer">
+        <p class="footer-text">© Finlay Henderson 2021 | Icons provided by Font Awesome</p>
+    </div>
+
+    <script>
+        function openAdminPanel() {
+          window.open("/server/admin.html", "_blank", "toolbar=yes,scrollbars=yes,resizable=no,top=1920,left=1080,width=1920,height=1080");
+        }
+        function openBotSite() {
+          window.open("https://spiiralnet.webnode.com", "_blank", "toolbar=yes,scrollbars=yes,resizable=no,top=1920,left=1080,width=1920,height=1080");
+        }
+    </script>
+</body>
+</html>
