@@ -4,10 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/edf2a8b45d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/style/admin.css">
     <title>SpiiralNet | Admin Panel</title>
 </head>
 <body>
-    <a href="../bot-code/">File Explorer</a>
+    <h1 class="title">Admin Panel</h1>
+
+    <div class="files">
+        <p class="code-text">Need to check code?</p>
+        <input class="button-panel" type="button" onclick="location.href='../bot-code'" value="File Explorer" />
+        <i class="fas fa-folder fa-4x"></i>
+    </div>
+
+    <div class="back-btn">
+        <p class="code-text">Go back?</p>
+        <input class="button-panel" type="button" onclick="location.href='/server/index.html'" value="Home" />
+        <i class="fas fa-home fa-4x"></i>
+    </div>
 </body>
 </html>

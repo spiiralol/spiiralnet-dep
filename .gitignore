@@ -1,3 +1,6 @@
 node_modules/
 unused/
 .env
+bot-code/.env
+bot-code/.replit
+bot-code/execute.log

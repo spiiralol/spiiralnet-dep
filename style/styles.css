@@ -33,7 +33,7 @@ p.error-fake {
     margin: 15px;
 }
 
-button.button-panel {
+.button-panel {
     align-self: center;
     text-align: center;
     background-color: #f4511e;
@@ -51,16 +51,37 @@ button.button-panel {
     cursor: pointer;
 }
 
-.button:hover {opacity: 1}
+.button-panel {opacity: 1}
 
 .admin i {
     float: right;
     color: rgb(51, 51, 51);
+    padding-right: 10px;
 }
 
 .website i {
     float: right;
     color: rgb(51, 51, 51);
+    padding-right: 10px;
+}
+
+.github {
+    text-align: left;
+    font-weight: bold;
+    margin: 15px;
+    border: 2px solid black;
+    padding: 5px;
+    margin: 5px;
+}
+
+.github i {
+    float: right;
+    color: rgb(51, 51, 51);
+    padding-right: 10px;
+}
+
+.code-text {
+    padding-right: 10px;
 }
 
 .footer {
