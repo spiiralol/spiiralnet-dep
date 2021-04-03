@@ -14,7 +14,7 @@ p.error-fake {
     font-size: 20px;
     padding-bottom: 50px;
 }
- 
+
 .admin {
     border: 2px solid black;
     padding: 5px;
@@ -27,7 +27,13 @@ p.error-fake {
     margin: 5px;
 }
 
-.admin-ask {
+.invite {
+  border: 2px solid black;
+  padding: 5px;
+  margin: 5px;
+}
+
+p.title {
     text-align: left;
     font-weight: bold;
     margin: 15px;
@@ -65,13 +71,16 @@ p.error-fake {
     padding-right: 10px;
 }
 
+.invite i {
+  float: right;
+  color: rgb(51, 51, 51);
+  padding-right: 10px
+}
+
 .github {
-    text-align: left;
-    font-weight: bold;
-    margin: 15px;
-    border: 2px solid black;
-    padding: 5px;
-    margin: 5px;
+  border: 2px solid black;
+  padding: 5px;
+  margin: 5px;
 }
 
 .github i {
@@ -85,7 +94,7 @@ p.error-fake {
 }
 
 .footer {
-    position: fixed;
+    /*position: fixed; */
     left: 0;
     bottom: 0;
     width: 100%;
