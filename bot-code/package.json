@@ -11,9 +11,11 @@
   "author": "Spiiral",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.5.1",
+    "@devsnowflake/quick.db": "^2.0.3",
+    "discord.js": "^12.5.3",
     "discord.js-collector": "^1.8.9",
     "dotenv": "^8.2.0",
+    "dsc.js": "^1.0.5",
     "moment": "^2.29.1",
     "ms": "^2.1.3",
     "quick.db": "^7.1.3"
