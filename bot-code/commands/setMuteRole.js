@@ -9,7 +9,7 @@ module.exports = {
             
             const testEmbed = new Discord.MessageEmbed()
                     .setColor('#e31b14')
-                    .setDescription(cross + '  You do not have the `ADMINISTATOR` permission.')
+                    .setDescription(cross + ' You do not have the `ADMINISTATOR` permission.')
 
             return message.channel.send(testEmbed)
         }

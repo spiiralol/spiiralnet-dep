@@ -4,47 +4,22 @@ const db = require('quick.db')
 module.exports = {
     name: 'userinfo',
     description: 'Displays info about a user.',
-    execute(client, message, args, Discord) {
-        const target = message.mentions.users.first();
-        
-        if (!args[0]) {
-            const memberTarget = message.author
-            let note = db.get(`note_${message.author.id}`)
+    async execute(client, message, args, Discord) {
+        const { guild, channel } = message;
 
-            if(note === null) {
-                note === 'None Set'
-            }
+        const user = message.mentions.users.first() || message.member.user;
+        const member = guild.members.cache.get(user.id)
 
-            const userInfoEmbed = new Discord.MessageEmbed()
-                .setAuthor(message.author.tag, message.author.displayAvatarURL())
-                .addField('User ID', message.author.id, true)
-                .addField('Nickname', `${message.author.nickname ? `${message.author.nickname}` : 'None'}`, true)
-                //.addField('Joined On', `${moment(message.author.joinedAt).format('DD-MM-YYYY')}`, true)
-                .addField('Created On', `${moment(memberTarget.createdAt).format('DD-MM-YYYY')}`, true)
-                .addField('Note', `${note}`, true)
-                .setTimestamp()
-                .setFooter('SpiiralNet')
+        const embed = new Discord.MessageEmbed()
+            .setAuthor(`User Info | ${user.username}#${user.discriminator}`, user.displayAvatarURL())
+            .addFields(
+                { name: 'Bot?', value: user.bot, inline: true },
+                { name: 'Nickname', value: member.nickname || 'None', inline: true },
+                { name: 'Joined Server', value: new Date(member.joinedTimestamp).toLocaleDateString(), inline: true },
+                { name: 'Joined Discord', value: new Date(user.createdTimestamp).toLocaleDateString(), inline: true },
+                { name: 'Role Count', value: member.roles.cache.size - 1, inline: true }
+            )
 
-            return message.channel.send(userInfoEmbed)
-        } else if (target) {
-            const memberTarget = message.guild.members.cache.get(target.id);
-            let note = db.get(`note_${memberTarget.user.id}`)
-
-            if(!note) {
-                note = 'None Set'
-            }
-
-            const userTargetEmbed = new Discord.MessageEmbed()
-                .setAuthor(`${memberTarget.user.username}#${memberTarget.user.discriminator}`, memberTarget.user.displayAvatarURL())
-                .addField('User ID', memberTarget.user.id, true)
-                .addField('Nickname', `${memberTarget.nickname ? `${memberTarget.nickname}` : 'None'}`, true)
-                .addField('Joined On', `${moment(memberTarget.joinedAt).format('DD-MM-YYYY')}`, true)
-                .addField('Note', `${note}`, true)
-                //.addField('Created On', `${moment(message.createdAt).format('DD-MM-YYYY')}`, true)
-                .setTimestamp()
-                .setFooter('SpiiralNet')
-
-            message.channel.send(userTargetEmbed)
-        }
+        channel.send(embed)
     }
 }

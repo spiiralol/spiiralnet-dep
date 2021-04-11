@@ -10,6 +10,16 @@ module.exports = {
 
         //     message.channel.send(permEmbed)
         // }
+
+        if (!message.guild.me.hasPermission('MANAGE_MESSAGES')) {
+            const cross = `<:redcross:821055423670517810>`
+            
+            const testEmbed = new Discord.MessageEmbed()
+                    .setColor('#e31b14')
+                    .setDescription(cross + ' I do not have the `MANAGE MESSAGES` permission.')
+
+            return message.channel.send(testEmbed)
+        }
         
         if (message.member.hasPermission("MANAGE_MESSAGES")) {
             if (!args[0]) return message.reply('Specify an amount of messages to clear');
