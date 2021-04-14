@@ -1,4 +1,4 @@
-// //const Link = require('dsc.js');
+// const Link = require('dsc.js');
 // const dsc = new Link.Client('1cd0110c-1059-4e8f-99eb-69c8cf96b7aa')
 
 // const { ReactionCollector } = require('discord.js-collector')
@@ -40,7 +40,7 @@
     
 //                         // Do what you want here, like set it on database...
 //                         await message.reply(`✅ | Success! You've settled welcome channel as ${channel}.`).then(m => m.delete({ timeout: 3000 }));
-//                         return db.set(`welcomechannel_${message.guild.id}`, channel)
+//                         return db.set(`welcomechannel_${message.guild.id}`, channel.id)
 //                     }
 //                 },
 //                 '📢': {
